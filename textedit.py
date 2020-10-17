@@ -1,6 +1,4 @@
-#Setup files must all be named "Rich Text setup.exe" and "Rich Text.zip"
 #version 2.6
-#Restore selected theme
 import sys
 import urllib.request
 from PyQt5.QtCore import QFile, QFileInfo, Qt, QTextCodec
@@ -58,16 +56,15 @@ class TextEdit(QMainWindow):
             current_version=2.6
             if current_version < float(new_ver):
                 mes = QMessageBox.information(self, "Rich Text Updater",
-                "You are using verion 2.6.\n"
+                "You are using verion"+str(version)+"\n"
                 "However a newer version has been released, do you want to install it?",
                 QMessageBox.Ok | QMessageBox.No)
 
                 if mes == QMessageBox.Ok:
                     update.close()
                     os.remove("/Users/"+str(username)+"/Downloads/version.txt")
-                    sys.exit()
-                    urllib.request.urlretrieve("https://github.com/coder12341/rich_text/blob/master/Rich%20Text%20setup.exe?raw=true", '/Users/'+str(username)+'/Downloads/Rich Text setup.exe')
-                    os.startfile('/Users/'+str(username)+'/Downloads/Rich Text setup.exe')
+                    urllib.request.urlretrieve("https://github.com/coder12341/richtext/releases/download/2.6/Rich.Text.2.6.setup.exe", '/Users/'+str(username)+'/Downloads/Rich Text setup.exe')
+                    os.startfile('C:/Users/'+str(username)+'/Downloads/Rich Text setup.exe')
                 if mes == QMessageBox.No:
                     update.close()
             else:
@@ -688,7 +685,7 @@ class TextEdit(QMainWindow):
               "<img src=icon.svg>"\
               "</center>"\
               "<p>Version 2.6<br/><br>"\
-              "<a href='https://coder12341.github.io/richtext/'>Website</a><br><br>"\
+              "<a href='https://coder12341.github.io/richtext/website'>Website</a><br><br>"\
               "Copyright &copy; K-Soft Inc., All rights reserved</p>"
         QMessageBox.about(self, "About", text) 
     def mergeFormatOnWordOrSelection(self, format):
