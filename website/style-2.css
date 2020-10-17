@@ -1,0 +1,27 @@
+span
+{
+	display: inline-block; 
+	margin: 8px; 
+	box-shadow: 1px 2px 2px grey; 
+}
+
+body {
+  background-color: white;
+	padding: 30px;
+	max-width: 350px;
+	margin: auto;
+}
+
+
+.rough-paper{
+  background-image:url("rough-paper.png");
+  color:black;
+  font-family:comic sans ms;
+  font-weight:800;
+}
+
+
+.big {
+	font-size: 30px;
+	padding: 10px;
+}

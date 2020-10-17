@@ -1,0 +1,101 @@
+body, html {
+  height: 100%;
+  margin: 0;
+  font: 400 15px/1.8 "Lato", sans-serif;
+  color: White;
+}
+
+.cd-logo, .layer-cake, .kitchen-equipment, .cake-ingredients, .bowl-of-cakemix, .cake-in-oven, .decorated-cake{
+  position: relative;
+  /*opacity: 0.7; optional will put a slide fade on the background images  */
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: #642580;
+  background-size: cover;
+  min-height: 50%; /* how big the gap is between text sections */
+}
+
+.cd-logo {
+  background-image: url("favicon2.png");
+  min-height: 100%;
+  background-size: auto;
+}
+
+.layer-cake {
+  background-image: url("1.png");
+}
+
+.kitchen-equipment {
+  background-image: url("2.png");
+}
+
+.cake-ingredients {
+  background-image: url("sample1.png");
+}
+
+.bowl-of-cakemix {
+  background-image: url("sample2.png");
+}
+
+.cake-in-oven {
+  background-image: url("oven.jpg");
+}
+
+.decorated-cake {
+  background-image: url("image.png");
+  min-height: 100%;
+  background-size: auto;
+}
+
+.caption {
+  position: absolute;
+  top: 40%;
+  width: 100%;
+  text-align: center;
+}
+
+.border {
+  background-color: #41BAC1;
+  color: White;
+  padding: 18px;
+  font-size: 25px;
+  letter-spacing: 10px;
+}
+
+h3 {
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  font: 20px "Lato", sans-serif;
+  color: white;
+  text-align:center
+}
+
+a {
+  letter-spacing: 1px;
+  font: 15px "Lato", comic sans ms;
+  color: white;
+}
+
+.textSection {
+  background-color:#642580;
+  padding: 50px, 80px;
+  font: 15px "Lato", comic sans ms;
+  text-align:left;
+}
+    
+h4{
+  background-color: #642580;
+  padding: 50px, 80px;
+  font: 10px "Lato", comic sans ms;
+  text-align:center; 
+  color:White;
+  height: 25%;
+}
+
+/* Turn off parallax scrolling for tablets and phones as it is not supported */
+@media only screen and (max-device-width: 1024px) {
+    .cd-logo, .layer-cake, .kitchen-equipment, .cake-ingredients, .bowl-of-cakemix, .cake-in-oven, .decorated-cake {
+        background-attachment: scroll;
+    }
+}
