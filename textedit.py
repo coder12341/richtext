@@ -32,6 +32,7 @@ class TextEdit(QMainWindow):
         super(TextEdit, self).__init__(parent)
 
         try:
+            #Restore Theme
             username = getpass.getuser()
             path2='/Users/'+str(username)+'/theme.txt'
             print(path2)
@@ -47,9 +48,9 @@ class TextEdit(QMainWindow):
 
         try:
             
-
+                #Update
             url ="https://raw.githubusercontent.com/coder12341/richtext/main/version.txt"
-            urllib.request.urlretrieve(url, '/Users/'+str(username)+'/Downloads/version.txt')#C:\Program Files (x86)\Rich Text\version.txt
+            urllib.request.urlretrieve(url, '/Users/'+str(username)+'/Downloads/version.txt')
 
             update=open("/Users/"+str(username)+"/Downloads/version.txt", "r")
             new_ver=update.readline()
@@ -71,7 +72,8 @@ class TextEdit(QMainWindow):
                 update.close()
         except:
             print()
-
+        
+        #Main Window
         self.setWindowIcon(QIcon('icon.png'))
         self.setToolButtonStyle(Qt.ToolButtonFollowStyle)
         app.setStyle("Fusion")
@@ -79,11 +81,11 @@ class TextEdit(QMainWindow):
         self.setupEditActions()
         self.setupTextActions()
         self.setupThemeActions()
-
+        
+        #Help Menu
         helpMenu = QMenu("Help", self)
         self.menuBar().addMenu(helpMenu)
         helpMenu.addAction("About", self.about)
-        #helpMenu.addAction("About &Qt", QApplication.instance().aboutQt)
  
         self.textEdit = QTextEdit(self)
         self.textEdit.currentCharFormatChanged.connect(
@@ -117,9 +119,6 @@ class TextEdit(QMainWindow):
         self.textEdit.copyAvailable.connect(self.actionCut.setEnabled)
         self.textEdit.copyAvailable.connect(self.actionCopy.setEnabled)
         QApplication.clipboard().dataChanged.connect(self.clipboardDataChanged)
-
-       #if fileName is None:
-            #fileName = ':/example.html'
 
         
 
@@ -414,7 +413,7 @@ class TextEdit(QMainWindow):
         tb.addAction(self.actionNew)
         menu.addAction(self.actionNew)
         
-    def dark_theme(self):
+    def dark_theme(self): #Dark Theme palette
         palette = QPalette()
         palette = QPalette()
         palette.setColor(QPalette.Window, QColor(53, 53, 53))
@@ -437,7 +436,7 @@ class TextEdit(QMainWindow):
         td.write("d")
         td.close
         
-    def light_theme(self):
+    def light_theme(self): #Light theme palette
         palette = QPalette()
         palette = QPalette()
         palette.setColor(QPalette.Window, QColor(240, 240, 240))
@@ -481,7 +480,7 @@ class TextEdit(QMainWindow):
         self.setCurrentFileName(f)
         return True
 
-    def maybeSave(self):
+    def maybeSave(self): #If not saved, warn
         if not self.textEdit.document().isModified():
             return True
 
@@ -501,7 +500,7 @@ class TextEdit(QMainWindow):
 
         return True
 
-    def setCurrentFileName(self, fileName=''):
+    def setCurrentFileName(self, fileName=''): #Save
         self.fileName = fileName
         self.textEdit.document().setModified(False)
 
@@ -513,19 +512,19 @@ class TextEdit(QMainWindow):
         self.setWindowTitle(self.tr("%s[*] - %s" % (shownName, "Rich Text")))
         self.setWindowModified(False)
 
-    def fileNew(self):
+    def fileNew(self): #New file, if previous file not saved, warn
         if self.maybeSave():
             self.textEdit.clear()
             self.setCurrentFileName()
 
-    def fileOpen(self):
+    def fileOpen(self): #Open file dialog
         fn, _ = QFileDialog.getOpenFileName(self, "Open File...", None,
                 "HTML-Files (*.htm *.html);;ODF files (*.odt);;Text files (*.txt);;All Files (*)")
 
         if fn:
             self.load(fn)
 
-    def fileSave(self):
+    def fileSave(self): #save file
         if not self.fileName:
             return self.fileSaveAs()
 
@@ -536,7 +535,7 @@ class TextEdit(QMainWindow):
 
         return success
 
-    def fileSaveAs(self):
+    def fileSaveAs(self): #Save file as
         fn, _ = QFileDialog.getSaveFileName(self, "Save as...", "untitled",
                 "ODF files (*.odt);;HTML-Files (*.htm *.html);;Text files (*.txt);;All Files (*)")
 
@@ -587,34 +586,34 @@ class TextEdit(QMainWindow):
             printer.setOutputFileName(fn)
             self.textEdit.document().print_(printer)
 
-    def textBold(self):
+    def textBold(self): #Bold
         fmt = QTextCharFormat()
         fmt.setFontWeight(self.actionTextBold.isChecked() and QFont.Bold or QFont.Normal)
         self.mergeFormatOnWordOrSelection(fmt)
 
-    def textUnderline(self):
+    def textUnderline(self): #Underline
         fmt = QTextCharFormat()
         fmt.setFontUnderline(self.actionTextUnderline.isChecked())
         self.mergeFormatOnWordOrSelection(fmt)
 
-    def textItalic(self):
+    def textItalic(self): #Italic
         fmt = QTextCharFormat()
         fmt.setFontItalic(self.actionTextItalic.isChecked())
         self.mergeFormatOnWordOrSelection(fmt)
 
-    def textFamily(self, family):
+    def textFamily(self, family): #FOnt Choser
         fmt = QTextCharFormat()
         fmt.setFontFamily(family)
         self.mergeFormatOnWordOrSelection(fmt)
 
-    def textSize(self, pointSize):
+    def textSize(self, pointSize): #Text Size
         pointSize = float(pointSize)
         if pointSize > 0:
             fmt = QTextCharFormat()
             fmt.setFontPointSize(pointSize)
             self.mergeFormatOnWordOrSelection(fmt)
 
-    def textStyle(self, styleIndex):
+    def textStyle(self, styleIndex): #Text Style
         cursor = self.textEdit.textCursor()
         if styleIndex:
             styleDict = {
