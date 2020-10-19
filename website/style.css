@@ -5,7 +5,7 @@ body, html {
   color: White;
 }
 
-.cd-logo, .layer-cake, .kitchen-equipment, .cake-ingredients, .bowl-of-cakemix, .cake-in-oven, .decorated-cake{
+.cd-logo, .first-image, .second-image, .third-image, .fourth-image, .fifth-image{
   position: relative;
   /*opacity: 0.7; optional will put a slide fade on the background images  */
   background-attachment: fixed;
@@ -22,27 +22,23 @@ body, html {
   background-size: auto;
 }
 
-.layer-cake {
+.first-image {
   background-image: url("1.png");
 }
 
-.kitchen-equipment {
+.second-image {
   background-image: url("2.png");
 }
 
-.cake-ingredients {
+.third-image {
   background-image: url("sample1.png");
 }
 
-.bowl-of-cakemix {
+.fourth-image {
   background-image: url("sample2.png");
 }
 
-.cake-in-oven {
-  background-image: url("oven.jpg");
-}
-
-.decorated-cake {
+.fifth-image {
   background-image: url("image.png");
   min-height: 100%;
   background-size: auto;
